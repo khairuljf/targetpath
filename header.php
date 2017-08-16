@@ -6,18 +6,8 @@
 
         <link type="text/css" href="<?php echo get_template_directory_uri() ?>/StyleSheets/ModuleStyleSheets.css" rel="StyleSheet" />
         <script type="text/javascript">var jslang = 'EN';</script>
-        <link href="<?php echo get_template_directory_uri() ?>/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
-        <link href="<?php echo get_template_directory_uri() ?>/css/avendor-font-styles.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/css/revolutionslider/settings.css" media="screen" />
-        <link href="<?php echo get_template_directory_uri() ?>/css/themecss/animate.css" rel="stylesheet" />
-        <link href="<?php echo get_template_directory_uri() ?>/css/themecss/lightbox.css" rel="stylesheet" />
-        <link href="<?php echo get_template_directory_uri() ?>/css/owl-carousel/owl.carousel.css" rel="stylesheet" />
-        <link href="<?php echo get_template_directory_uri() ?>/css/owl-carousel/owl.transitions.css" rel="stylesheet" />
-        <link href="<?php echo get_template_directory_uri() ?>/css/avendor.css" rel="stylesheet" />
-        <link href="<?php echo get_template_directory_uri() ?>/css/colors/color-red.css" rel="stylesheet" title="style1" />
-        <link href="http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700,800,900" rel="stylesheet" type="text/css" />
-        <link href="http://fonts.googleapis.com/css?family=Playball" rel="stylesheet" type="text/css" />
+      
+        
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo get_template_directory_uri() ?>/ico/apple-touch-icon-144-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_template_directory_uri() ?>/ico/apple-touch-icon-114-precomposed.png" />
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo get_template_directory_uri() ?>/ico/apple-touch-icon-72-precomposed.png" />
@@ -46,8 +36,8 @@
         <!-- Color CSS -->
         <!-- Google Fonts -->
         <!-- Fav and touch icons -->
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/CatalystStyles/Box-vs=b2324.r509702-phase1.css" type="text/css" media="screen" />
-        <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/CatalystScripts/Java_Box-vs=b2324.r509702-phase1.js"></script>
+
+       
         <link rel="stylesheet" type="text/css" href="<?php bloginfo("stylesheet_url") ?>">
         <style>
 
@@ -71,8 +61,8 @@
                             <div class="col-md-6 col-sm-6 columns">
                                 <div class="header-top-left">
                                     <ul class="social-top">
-                                        <li><a href="https://www.linkedin.com/company/604595" target="_blank" class="ToolTip" title="Linkedin"><span class="fa fa-linkedin"></span></a> </li>
-                                        <li><a href="https://plus.google.com/u/0/103311665672323389974/about" target="_blank" class="ToolTip" title="Google+"><span class="fa fa-google-plus"></span></a> </li>
+                                        <li><a href="<?php echo get_theme_mod('linkeding'); ?>" target="_blank" class="ToolTip" title="Linkedin"><span class="fa fa-linkedin"></span></a> </li>
+                                        <li><a href="<?php echo get_theme_mod('googleplus'); ?>" target="_blank" class="ToolTip" title="Google+"><span class="fa fa-google-plus"></span></a> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -159,7 +149,13 @@
             <!-- Main Container -->
             <div class="main-wrapper">
 
+<?php
+$prefix = 'clean_';
+$title  = get_post_meta( get_the_ID(), $prefix . 'title-text', true );
+$subtitle  = get_post_meta( get_the_ID(), $prefix . 'subtitle-text', true );
 
+
+?>
 
                 <!-- Parallax -->
                 <div data-stellar-background-ratio="0.1" class="parallax parallax-background13"  style="background-image:url('<?php header_image() ?>')"   >
@@ -168,8 +164,8 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1">
-                                <h3 class="fancy-title color-white text-center animation fadeInDown"><span>From ideas to execution, we build brands and grow businesses.</span></h3>
-                                <p class="lead text-center color-white">TargetPath is a business accelerator that has mastered the complex dynamics of bringing great ideas to market. We&rsquo;ve had our fingers on the pulse of the consumer and commercial electronics industry for more than two decades. Our unique experience, from management, operations, product development, finance to marketing, means you get proven success strategies and a veteran team to accelerate your success. </p>
+                                <h3 class="fancy-title color-white text-center animation fadeInDown"><span><?php echo $title;  ?></span></h3>
+                                <p class="lead text-center color-white"><?php echo $subtitle;  ?> </p>
                             </div>
                         </div>
                     </div>
