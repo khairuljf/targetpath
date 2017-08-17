@@ -9,42 +9,38 @@
         <?php
         $mypage = new WP_Query(array(
             'post_type' => 'page',
-            
                 ))
         ?>
 
         <?php
         while ($mypage->have_posts()): $mypage->the_post();
-        $k=get_the_title();
-        
+            $k = get_the_title();
+
             $prefix = 'clean_';
             $subtitle = get_post_meta(get_the_ID(), $prefix . 'subtitle-text', true);
             ?>
-        
-            <?php
-                if($k=='Our Team' || $k=='Services' || $k=='Results'){ ?>
-        
+
+            <?php if ($k == 'Our Team' || $k == 'Services' || $k == 'Results') { ?>
+
                 <div class="col-md-4">
-                <div class="iconbox vertical animation fadeInUp delay2">
-                    <div class="iconbox-content">
-                        <h3 class="fancy-title text-center">
-                            <span>
-                                <?php the_title(); ?>
-                            </span>
-                        </h3>
-                        <p><?php echo $subtitle ?></p>
-                        <a class="btn btn-success btn-xs" href="<?php the_permalink(); ?>">Read More</a> </div>
+                    <div class="iconbox vertical animation fadeInUp delay2">
+                        <div class="iconbox-content">
+                            <h3 class="fancy-title text-center">
+                                <span>
+        <?php the_title(); ?>
+                                </span>
+                            </h3>
+                            <p><?php echo $subtitle ?></p>
+                            <a class="btn btn-success btn-xs" href="<?php the_permalink(); ?>">Read More</a> </div>
+                    </div>
+                    <div class="white-space space-small"></div>
                 </div>
-                <div class="white-space space-small"></div>
-            </div>
-               <?php     
-                }
-            
-            
-            ?>
-        
-            
-<?php endwhile; ?>
+        <?php
+    }
+    ?>
+
+
+        <?php endwhile; ?>
 
 
     </div>
@@ -183,7 +179,7 @@
     </div>
     <div class="col-md-16">
         <div class="col-md-2">
-            <img alt="" width="200" height="101" src="<?php echo get_template_directory_uri() ?>/img/results/logos-grayscale/activelight-logo.jpg" class="img-responsive thumbnail aligntop" />
+            
         </div>
         <div class="col-md-2">
             <img alt="" width="200" height="101" src="<?php echo get_template_directory_uri() ?>/img/results/logos-grayscale/apf-logo.jpg" class="img-responsive thumbnail aligntop" />

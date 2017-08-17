@@ -1,5 +1,4 @@
 <?php
-
 add_theme_support('title-tag');
 
 
@@ -11,7 +10,7 @@ add_theme_support('custom-header', $args);
 
 
 add_theme_support('custom-background');
-add_theme_support('post-thumbnail');
+add_theme_support('post-thumbnails');
 
 
 register_nav_menus(array(
@@ -41,7 +40,7 @@ function mycustomize($customize) {
         'priority' => '10',
     ));
     $customize->add_setting('linkeding', array(
-        'default' =>'#',
+        'default' => '#',
         'transport' => 'refresh',
     ));
     $customize->add_control('linkeding', arraY(
@@ -50,7 +49,7 @@ function mycustomize($customize) {
         'type' => 'text',
     ));
     $customize->add_setting('googleplus', array(
-        'default' =>  '#',
+        'default' => '#',
         'transport' => 'refresh',
     ));
     $customize->add_control('googleplus', arraY(
@@ -72,14 +71,14 @@ function mycustomize($customize) {
         'settings' => 'logo_upload',
             ))
     );
-    
-    
+
+
     $customize->add_section('footer-section', array(
         'title' => 'Footer Option',
         'priority' => '100',
     ));
     $customize->add_setting('copyright', array(
-        'default' =>'#',
+        'default' => '#',
         'transport' => 'refresh',
     ));
     $customize->add_control('copyright', arraY(
@@ -93,7 +92,7 @@ add_action('customize_register', 'mycustomize');
 
 
 
-/*Include CMB2 meta box */
+/* Include CMB2 meta box */
 include 'metabox/init.php';
 include 'metabox/functions.php';
 
@@ -101,6 +100,7 @@ include 'metabox/functions.php';
 
 
 /* Register style & script */
+
 function boostrap_started_script() {
     wp_register_style('ModuleStyleSheets', get_template_directory_uri() . '/StyleSheets/ModuleStyleSheets.css');
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
@@ -116,37 +116,37 @@ function boostrap_started_script() {
     wp_register_style('googleapis1', 'http://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700,800,900');
     wp_register_style('googleapis2', 'http://fonts.googleapis.com/css?family=Playball');
     wp_register_style('Box-vs', get_template_directory_uri() . '/CatalystStyles/Box-vs=b2324.r509702-phase1.css');
- 
-    
-    
-    wp_register_script('Java_Box', get_template_directory_uri().'/CatalystScripts/Java_Box-vs=b2324.r509702-phase1.js');
-    wp_register_script('jquery', get_template_directory_uri().'/js/jquery-1.11.1.min.js');
-    wp_register_script('bootstrap', get_template_directory_uri().'/js/bootstrap.min.js');
-    wp_register_script('jquery.countdown', get_template_directory_uri().'/js/themejs/jquery.countdown.js');
-    wp_register_script('jquery.queryloader2', get_template_directory_uri().'/js/themejs/jquery.queryloader2.min.js');
-    wp_register_script('SmoothScroll', get_template_directory_uri().'/js/themejs/SmoothScroll.js');
-    wp_register_script('jquery.stickOnScroll', get_template_directory_uri().'/js/themejs/jquery.stickOnScroll.js');
+
+
+
+    wp_register_script('Java_Box', get_template_directory_uri() . '/CatalystScripts/Java_Box-vs=b2324.r509702-phase1.js');
+    wp_register_script('jquery', get_template_directory_uri() . '/js/jquery-1.11.1.min.js');
+    wp_register_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js');
+    wp_register_script('jquery.countdown', get_template_directory_uri() . '/js/themejs/jquery.countdown.js');
+    wp_register_script('jquery.queryloader2', get_template_directory_uri() . '/js/themejs/jquery.queryloader2.min.js');
+    wp_register_script('SmoothScroll', get_template_directory_uri() . '/js/themejs/SmoothScroll.js');
+    wp_register_script('jquery.stickOnScroll', get_template_directory_uri() . '/js/themejs/jquery.stickOnScroll.js');
     wp_register_script('jquery.easing', 'http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js');
-    wp_register_script('jquery.themepunch', get_template_directory_uri().'/js/revolutionslider/jquery.themepunch.plugins.min.js');
-    wp_register_script('themepunch.revolution', get_template_directory_uri().'/js/revolutionslider/jquery.themepunch.revolution.min.js');
-    wp_register_script('livicons', get_template_directory_uri().'/js/livicons/livicons-1.3.min.js');
-    wp_register_script('raphael', get_template_directory_uri().'/js/livicons/raphael-min.js');
-    wp_register_script('jquery.isotope', get_template_directory_uri().'/js/themejs/jquery.isotope.min.js');
-    wp_register_script('jquery.colio', get_template_directory_uri().'/js/themejs/jquery.colio.min.js');
-    wp_register_script('stellar', get_template_directory_uri().'/js/themejs/jquery.stellar.min.js');
-    wp_register_script('owl.carousel', get_template_directory_uri().'/js/owl-carousel/owl.carousel.js');
-    wp_register_script('jquery.countTo', get_template_directory_uri().'/js/themejs/jquery.countTo.js');
-    wp_register_script('magnific', get_template_directory_uri().'/js/themejs/jquery.magnific-popup.min.js');
-    wp_register_script('Tooltip', get_template_directory_uri().'/js/themejs/jQuery.Opie.Tooltip.min.js');
-    wp_register_script('waypoints', get_template_directory_uri().'/js/themejs/jquery.waypoints.min.js');
-    wp_register_script('easypiechart', get_template_directory_uri().'/js/themejs/jquery.easypiechart.min.js');
+    wp_register_script('jquery.themepunch', get_template_directory_uri() . '/js/revolutionslider/jquery.themepunch.plugins.min.js');
+    wp_register_script('themepunch.revolution', get_template_directory_uri() . '/js/revolutionslider/jquery.themepunch.revolution.min.js');
+    wp_register_script('livicons', get_template_directory_uri() . '/js/livicons/livicons-1.3.min.js');
+    wp_register_script('raphael', get_template_directory_uri() . '/js/livicons/raphael-min.js');
+    wp_register_script('jquery.isotope', get_template_directory_uri() . '/js/themejs/jquery.isotope.min.js');
+    wp_register_script('jquery.colio', get_template_directory_uri() . '/js/themejs/jquery.colio.min.js');
+    wp_register_script('stellar', get_template_directory_uri() . '/js/themejs/jquery.stellar.min.js');
+    wp_register_script('owl.carousel', get_template_directory_uri() . '/js/owl-carousel/owl.carousel.js');
+    wp_register_script('jquery.countTo', get_template_directory_uri() . '/js/themejs/jquery.countTo.js');
+    wp_register_script('magnific', get_template_directory_uri() . '/js/themejs/jquery.magnific-popup.min.js');
+    wp_register_script('Tooltip', get_template_directory_uri() . '/js/themejs/jQuery.Opie.Tooltip.min.js');
+    wp_register_script('waypoints', get_template_directory_uri() . '/js/themejs/jquery.waypoints.min.js');
+    wp_register_script('easypiechart', get_template_directory_uri() . '/js/themejs/jquery.easypiechart.min.js');
     wp_register_script('jquery.tweet', 'http://www.targetpath.com/twitter/jquery.tweet.js');
-    wp_register_script('application', get_template_directory_uri().'/js/themejs/application.js');
-    
-    
-       
-    
-    
+    wp_register_script('application', get_template_directory_uri() . '/js/themejs/application.js');
+
+
+
+
+
     wp_enqueue_style('ModuleStyleSheets');
     wp_enqueue_style('bootstrap');
     wp_enqueue_style('awesome');
@@ -161,52 +161,89 @@ function boostrap_started_script() {
     wp_enqueue_style('googleapis1');
     wp_enqueue_style('googleapis2');
     wp_enqueue_style('Box-vs');
-    
-    
-         wp_enqueue_script('Java_Box');
-        wp_enqueue_script('jquery');
-        wp_enqueue_script('bootstrap');
-        wp_enqueue_script('jquery.countdown');
-        wp_enqueue_script('jquery.queryloader2');
-        wp_enqueue_script('SmoothScroll');
-        wp_enqueue_script('jquery.stickOnScroll');
-        wp_enqueue_script('jquery.easing');
-        wp_enqueue_script('jquery.themepunch');
-        wp_enqueue_script('themepunch.revolution');
-        wp_enqueue_script('livicons');
-        wp_enqueue_script('raphael');
-        wp_enqueue_script('jquery.isotope');
-        wp_enqueue_script('jquery.colio');
-        wp_enqueue_script('stellar');
-        wp_enqueue_script('owl.carousel');
-        wp_enqueue_script('jquery.countTo');
-        wp_enqueue_script('magnific');
-        wp_enqueue_script('Tooltip');
-        wp_enqueue_script('waypoints');
-        wp_enqueue_script('easypiechart');
-        wp_enqueue_script('jquery.tweet');
-        wp_enqueue_script('application');
-    
-    
 
-  
-    
 
-    
+    wp_enqueue_script('Java_Box');
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('bootstrap');
+    wp_enqueue_script('jquery.countdown');
+    wp_enqueue_script('jquery.queryloader2');
+    wp_enqueue_script('SmoothScroll');
+    wp_enqueue_script('jquery.stickOnScroll');
+    wp_enqueue_script('jquery.easing');
+    wp_enqueue_script('jquery.themepunch');
+    wp_enqueue_script('themepunch.revolution');
+    wp_enqueue_script('livicons');
+    wp_enqueue_script('raphael');
+    wp_enqueue_script('jquery.isotope');
+    wp_enqueue_script('jquery.colio');
+    wp_enqueue_script('stellar');
+    wp_enqueue_script('owl.carousel');
+    wp_enqueue_script('jquery.countTo');
+    wp_enqueue_script('magnific');
+    wp_enqueue_script('Tooltip');
+    wp_enqueue_script('waypoints');
+    wp_enqueue_script('easypiechart');
+    wp_enqueue_script('jquery.tweet');
+    wp_enqueue_script('application');
 }
+
 add_action('wp_enqueue_scripts', 'boostrap_started_script');
 
+function create_post_type() {
+    register_post_type('news', array(
+        'labels' => array(
+            'name' => 'News & Views',
+        ),
+        'public' => true,
+        'supports' => array('thumbnail', 'title', 'editor')
+            )
+    );
+    register_post_type('our_clients', array(
+        'labels' => array(
+            'name' => 'Our Client',
+        ),
+        'public' => true,
+        'supports' => array('thumbnail', 'title',)
+            )
+    );
+    
+    
+    
+    
+    
+    register_post_type('service', array(
+        'labels' => array(
+            'name' => 'Service',
+        ),
+        'public' => true,
+        'supports' => array('thumbnail', 'title', 'editor')
+            )
+    );
+    
+    register_post_type('testimonial', array(
+        'labels' => array(
+            'name' => 'Testimonials',
+        ),
+        'public' => true,
+        'supports' => array('thumbnail', 'title', 'editor')
+            )
+    );
+}
+
+add_action('init', 'create_post_type');
+
+// custom image size 
+
+add_image_size( 'news', 258, 198, true );
+add_image_size( 'client-logo', 200, 101, true );
+add_image_size( 'service-icon', 73, 73, true );
+add_image_size( 'service-thumb', 555, 309, true );
 
 
 
+// inlcuding shortcode
 
-
-
-
-
-
-
-
-?>
+include 'inc/shortcode.php';
 
 
