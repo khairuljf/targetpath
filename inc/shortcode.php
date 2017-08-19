@@ -388,6 +388,133 @@ function contact_us($atts) {
 add_shortcode('contact-us', 'contact_us');
 
 
+function service_list($atts) {
+    extract(shortcode_atts(array(
+        'count' => '',
+       
+                    ), $atts));
+    
+     $q = new WP_Query(
+            array('posts_per_page' => $count, 'post_type' => 'service', 'orderby' => 'menu_order', 'order' => 'ASC')
+    );
+
+   
+
+    $list = '<div class="container">
+        <div class="white-space space-small"></div> <div class="row">
+        <div class="col-md-12 col-md-offset-1 columns">
+         <p class="animation fadeInRight"> <img alt="" width="599" height="600" src="  '.get_template_directory_uri().'./img/services/TargetPath_Infographic.jpg" class="img-responsive alignleft" /> TargetPath offers a comprehensive approach to supporting your business goals with an emphasis on new business development and operational infrastructure needed to support new revenue. Our systematic approach to growing your business and expanding your markets includes a wide range of services and disciplines, including:</p>
+        
+';
+
+
+    
+      while ($q->have_posts()) : $q->the_post();
+        $idd = get_the_ID();
+        $custom_field = get_post_meta($idd, 'custom_field', true);
+        $post_content = get_the_content();
+      
+        
+        $list .= '<p><a href="services.html#strategy"><strong>Corporate Management &amp; Strategic Planning</strong></a></p>';
+        
+        
+    endwhile;
+
+  
+    $list .= '</div></div></div><div class="col-md-8 col-md-offset-2">
+        <hr class="hr-fancy text-center">
+        </div>';
+    wp_reset_query();
+    return $list;
+}
+
+add_shortcode('service-list', 'service_list');
+
+function team_members($atts) {
+    extract(shortcode_atts(array(
+        'count' => '',
+       
+                    ), $atts));
+    
+     $q = new WP_Query(
+            array('posts_per_page' => $count, 'post_type' => 'team', 'orderby' => 'menu_order', 'order' => 'ASC')
+    );
+     
+     
+   
+
+    $list = '<div class="container"><div class="white-space space-small"></div><div class="row"><div class="col-md-12">';
+        $i= 0;
+      while ($q->have_posts()) : $q->the_post();
+        $idd = get_the_ID();
+        $custom_field = get_post_meta($idd, 'custom_field', true);
+        $post_content = get_the_content();
+         $prefix = 'clean_';
+        $mail = get_post_meta(get_the_ID(), $prefix . 'mail', true);
+      
+        $positions= get_the_terms(get_the_ID(),'team_member');
+        
+        foreach ($positions as $position){
+            
+            $list.= '<div class="col-md-3 col-sm-6 columns">
+            <div class="panel panel-default animation fadeInLeft delay1">
+                                    <div class="panel-body">
+                                       
+                                        <div class="team-wrapper team-wrapper-alt">
+                                            <div class="team-member">
+                                            <img src="'.get_the_post_thumbnail_url().'" alt="Team Member" class="img-responsive img-rounded" />
+                                                <div class="team-info">
+                                                    <h5 class="team-name">'.get_the_title().'</h5>
+                                                    <p class="team-role">'.$position->name.'</p>
+                                                </div>
+                                                <hr class="hr-fancy text-center" />
+                                                <div style="display: none;" class="myToolTipTemlate">
+                                                    <h4 class="color-white">{title}</h4>
+                                                    <div style="max-width: 310px;">
+                                                        <p class="text-center">{data-opie-content}</p>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                                <!-- /HTML Tooltip content-->
+                                                <p class="text-center"><a data-opie-content="Specializing in business development and strategy in advanced display and digital signage markets. After managing the divestiture of the CoolSign Digital Signage business for Planar Systems, Brad began to provide consulting services  to companies in the specialty display, digital signage and digital out-of-home media industries." title="Brad Gleeson : Managing Partner" data-opie-template=".myToolTipTemlate" data-opie-position="tc:bc" target="_blank" href="team.html#" class="ToolTip btn btn-default btn-alt">Read Bio</a></p>
+                                                <div class="text-center">
+                                                    <ul class="list-inline">
+                                                        <li><a target="_blank" title="Email" data-opie-position="tc:bc" class="ToolTip" href="mailto:brad.gleeson@targetpath.com"><span class="fa fa-at fa-lg"></span></a> </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
+           
+        }
+        
+        
+        
+        
+        
+      
+        
+        
+    endwhile;
+
+  
+    $list .= '</div></div></div>';
+    wp_reset_query();
+    return $list;
+}
+
+add_shortcode('member-list', 'team_members');
+
+
+
+
+
+
+
+
+
 
 
 

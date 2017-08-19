@@ -229,9 +229,28 @@ function create_post_type() {
         'supports' => array('thumbnail', 'title', 'editor')
             )
     );
+        register_post_type('team', array(
+        'labels' => array(
+            'name' => 'Team Members',
+        ),
+        'public' => true,
+        'supports' => array('thumbnail', 'title', 'editor')
+            )
+    );
+        register_taxonomy( 'team_member', 'team', array(
+    'labels'=>array(
+        'name'=>'Member Designation',
+        'add_new_item'=>'Add New Designation',
+    ),
+    'public'=>true,
+    'hierarchical'=>true,
+) );
 }
 
 add_action('init', 'create_post_type');
+
+
+
 
 // custom image size 
 
