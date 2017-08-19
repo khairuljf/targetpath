@@ -415,7 +415,7 @@ function service_list($atts) {
         $post_content = get_the_content();
       
         
-        $list .= '<p><a href="services.html#strategy"><strong>Corporate Management &amp; Strategic Planning</strong></a></p>';
+        $list .= '<p><a href="services.html#strategy"><strong>'.get_the_title().'</strong></a></p>';
         
         
     endwhile;
@@ -476,10 +476,12 @@ function team_members($atts) {
                                                     <div class="clear"></div>
                                                 </div>
                                                 <!-- /HTML Tooltip content-->
-                                                <p class="text-center"><a data-opie-content="Specializing in business development and strategy in advanced display and digital signage markets. After managing the divestiture of the CoolSign Digital Signage business for Planar Systems, Brad began to provide consulting services  to companies in the specialty display, digital signage and digital out-of-home media industries." title="Brad Gleeson : Managing Partner" data-opie-template=".myToolTipTemlate" data-opie-position="tc:bc" target="_blank" href="team.html#" class="ToolTip btn btn-default btn-alt">Read Bio</a></p>
+                                                <p class="text-center">
+                                                    <a data-opie-content=" '.get_the_content().'" title="'.get_the_title().' : '.$position->name.'" data-opie-template=".myToolTipTemlate" data-opie-position="tc:bc" target="_blank" href="team.html#" class="ToolTip btn btn-default btn-alt">Read Bio</a>
+                                                </p>
                                                 <div class="text-center">
                                                     <ul class="list-inline">
-                                                        <li><a target="_blank" title="Email" data-opie-position="tc:bc" class="ToolTip" href="mailto:brad.gleeson@targetpath.com"><span class="fa fa-at fa-lg"></span></a> </li>
+                                                        <li><a target="_blank" title="Email" data-opie-position="tc:bc" class="ToolTip" href="mailto:'.$mail.'"><span class="fa fa-at fa-lg"></span></a> </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -507,6 +509,100 @@ function team_members($atts) {
 
 add_shortcode('member-list', 'team_members');
 
+
+function our_partner($atts) {
+    extract(shortcode_atts(array(
+        'count' => '',
+        'title' => 'HOW WE’VE HELPED OUR CLIENTS ',
+                    ), $atts));
+
+    $q = new WP_Query(
+            array('posts_per_page' => $count, 'post_type' => 'partner', 'orderby' => 'menu_order', 'order' => 'ASC')
+    );
+
+    $list = ' <div class="row">
+                    <div class="col-md-12 columns">
+                        <hr class="hr-fancy text-center" />
+                        <h4 class="fancy-title text-center"><span>Our Partners</span></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 columns">
+                        <!-- PARTNERS -->
+                        <div class="portfolio clearfix">
+                            <div class="portfolio-grid portfolio-4-cols portfolio-classic">
+                
+
+  
+';
+
+    while ($q->have_posts()) : $q->the_post();
+        $idd = get_the_ID();
+        $custom_field = get_post_meta($idd, 'custom_field', true);
+        $post_content = get_the_content();
+         $prefix = 'clean_';
+        $siteurl = get_post_meta(get_the_ID(), $prefix . 'website', true);
+
+
+ 
+
+
+        $list .= '<div class="element isotope-item branding">
+                        <div class="element-inner animation fadeInLeft">
+                            <div class="overlay-wrapper"> <img alt="" src="'.get_the_post_thumbnail_url().'" /> </div>
+                            <div class="portfolio-item-content">
+                                <h3 class="portfolio-item-title"><a target="_blank" href="'.$siteurl.'">'.get_the_title().'</a></h3>
+                            </div>
+                        </div>
+                    </div>';
+
+    endwhile;
+    $list .= '</div></div></div></div>';
+    wp_reset_query();
+    return $list;
+}
+
+add_shortcode('our-partners', 'our_partner');
+
+
+function career($atts) {
+    extract(shortcode_atts(array(
+        'count' => '',
+        'title' => 'HOW WE’VE HELPED OUR CLIENTS ',
+                    ), $atts));
+
+ 
+
+    $list = ' 
+        <div data-stellar-background-ratio="0.4" class="parallax parallax-background12">
+                    <div class="bg-overlay bg-overlay-dark"></div>
+                    <div class="white-space space-big"></div>
+                    <div class="container">
+                        <div class="row">
+                
+
+  
+';
+
+  
+
+
+ 
+
+
+        $list .= ' <div class="col-md-8 col-md-offset-2">
+                        <h3 class="light text-center color-white animation fadeInDown delay1">If you are talented, highly motivated, hardworking,
+                            passionate about your work and want to join our team... </h3>
+                        <div class="white-space space-xsmall"></div>
+                        <p class="text-center animation fadeInUp"><a href="job-openings.html" class="btn btn-primary btn-lg">Careers Available at TargetPath</a></p>
+                    </div>';
+
+    $list .= '</div></div></div>';
+    wp_reset_query();
+    return $list;
+}
+
+add_shortcode('career', 'career');
 
 
 

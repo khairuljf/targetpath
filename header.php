@@ -158,6 +158,13 @@ $subtitle  = get_post_meta( get_the_ID(), $prefix . 'subtitle-text', true );
 ?>
 
                 <!-- Parallax -->
+                <?php
+                    if(is_page('contact')){
+                        
+                    }
+ else {
+     
+     ?>
                 <div data-stellar-background-ratio="0.1" class="parallax parallax-background13"  style="background-image:url('<?php header_image() ?>')"   >
                     <div class="bg-overlay bg-color-default"></div>
                     <div class="white-space space-big"></div>
@@ -171,5 +178,12 @@ $subtitle  = get_post_meta( get_the_ID(), $prefix . 'subtitle-text', true );
                     </div>
                     <div class="white-space space-big"></div>
                 </div>
+                
+                
+                <?php
+     
+ }
+                
+                ?>
                 <!-- /Parallax -->
                 <!-- Container -->

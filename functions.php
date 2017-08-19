@@ -237,6 +237,16 @@ function create_post_type() {
         'supports' => array('thumbnail', 'title', 'editor')
             )
     );
+        
+        register_post_type('partner', array(
+      'labels' => array(
+          'name' => 'Our Partner',
+      ),
+      'public' => true,
+      'supports' => array('thumbnail', 'title')
+          )
+    );
+        
         register_taxonomy( 'team_member', 'team', array(
     'labels'=>array(
         'name'=>'Member Designation',

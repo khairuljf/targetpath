@@ -5,7 +5,7 @@
 
 <!-- /Container -->
 <!-- Parallax Container -->
-<div class="parallax parallax-background6" data-stellar-background-ratio="0.4"> <a name="services"></a>
+<div class="parallax " data-stellar-background-ratio="0.4"> <a name="services"></a>
     <div class="white-space space-small"></div>
     <div class="container">
         <?php
