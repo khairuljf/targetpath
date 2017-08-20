@@ -196,7 +196,8 @@ function create_post_type() {
             'name' => 'News & Views',
         ),
         'public' => true,
-        'supports' => array('thumbnail', 'title', 'editor')
+        'supports' => array('thumbnail', 'title', 'editor'),
+        'menu_icon'=>'dashicons-media-text'
             )
     );
     register_post_type('our_clients', array(
@@ -204,50 +205,79 @@ function create_post_type() {
             'name' => 'Our Client',
         ),
         'public' => true,
-        'supports' => array('thumbnail', 'title',)
+        'supports' => array('thumbnail', 'title',),
+        'menu_icon'=>'dashicons-groups'
             )
     );
-    
-    
-    
-    
-    
+  
     register_post_type('service', array(
         'labels' => array(
             'name' => 'Service',
+             'all_items'=>'All Concept'
         ),
         'public' => true,
-        'supports' => array('thumbnail', 'title', 'editor')
+        'supports' => array('thumbnail', 'title', 'editor'),
+        'menu_icon'=>'dashicons-welcome-write-blog',
             )
     );
     
     register_post_type('testimonial', array(
         'labels' => array(
             'name' => 'Testimonials',
+            'all_items'=>'All Testimonials'
         ),
         'public' => true,
-        'supports' => array('thumbnail', 'title', 'editor')
+        'supports' => array('thumbnail', 'title', 'editor'),
+        'menu_icon'=>'dashicons-editor-quote',
             )
     );
         register_post_type('team', array(
         'labels' => array(
             'name' => 'Team Members',
+            'all_items'=>'All Members'
         ),
         'public' => true,
-        'supports' => array('thumbnail', 'title', 'editor')
+        'supports' => array('thumbnail', 'title', 'editor'),
+        'menu_icon'=>'dashicons-visibility',
             )
     );
         
         register_post_type('partner', array(
       'labels' => array(
           'name' => 'Our Partner',
+          'all_items'=>'All Partner'
       ),
       'public' => true,
-      'supports' => array('thumbnail', 'title')
+      'supports' => array('thumbnail', 'title'),
+      'menu_icon'=>'https://cdn2.iconfinder.com/data/icons/gnomeicontheme/24x24/stock/generic/stock_new-meeting.png'
+          )
+    );
+         register_post_type('concept', array(
+      'labels' => array(
+          'name' => 'Our Concept',
+          'all_items'=>'All Concept'
+          
+      ),
+      'public' => true,
+      'supports' => array('thumbnail', 'title','editor'),
+      'menu_icon'=>'dashicons-admin-appearance'
+      
+          )
+      
+    );
+         
+      register_post_type('jobs', array(
+      'labels' => array(
+          'name' => 'Job Post',
+          'all_items'=>'All Post'
+      ),
+      'public' => true,
+      'supports' => array('thumbnail', 'title','editor'),
+      'menu_icon'=>'https://cdn1.iconfinder.com/data/icons/bnw/16x16/actions/mail_post.png'
           )
     );
         
-        register_taxonomy( 'team_member', 'team', array(
+    register_taxonomy( 'team_member', 'team', array(
     'labels'=>array(
         'name'=>'Member Designation',
         'add_new_item'=>'Add New Designation',
@@ -274,5 +304,17 @@ add_image_size( 'service-thumb', 555, 309, true );
 // inlcuding shortcode
 
 include 'inc/shortcode.php';
+
+
+/********************************************** 
+*  Post read more shortcode function  ........
+***********************************************
+*/
+function read_mores($limit){
+    $posts = explode(" ", get_the_content());
+    $less_posts = array_slice($posts, 0, $limit);
+    return implode(' ', $less_posts);
+
+}
 
 
