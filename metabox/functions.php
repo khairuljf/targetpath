@@ -321,8 +321,6 @@ function part_website() {
 		// 'classes_cb' => 'yourprefix_add_some_classes', // Add classes through a callback.
 	) );
 
-
-	
 		$cmb_demo->add_field( array(
 		'name'       => esc_html__( 'Site Url: ', 'cmb2' ),
 
@@ -336,19 +334,9 @@ function part_website() {
 		// 'column'          => true, // Display field value in the admin post-listing columns
 	) );
 
-   
-                
-       
-      
-                
-                
-
-
-
-
-
-
 }
 
 add_action( 'cmb2_admin_init', 'part_website' );
+
+
 

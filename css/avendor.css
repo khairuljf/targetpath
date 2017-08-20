@@ -335,6 +335,10 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small
 }
 p {font-size:14px; font-weight: 300; line-height:1.8;  margin-bottom: 20px; text-rendering: optimizelegibility;}
 
+table tbody tr td p{
+        margin-bottom: 0;
+}
+
 /* Lead Paragraph*/
 .lead{ font-size:1.6em; font-weight:300; letter-spacing:0px; line-height:1.9em}
 .lead.lead-small{ font-size:1.2em;}

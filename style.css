@@ -2,3 +2,27 @@
     
     background: red;
 }
+
+.single-news img{
+    width: 40%;
+    height: auto;
+    float: right;
+    padding: 10px 0;
+    
+    
+}
+.single-news  .profile-news{
+    width: 25%;
+    height: auto;
+    float: right;
+    margin-right: 10%;
+    
+}
+.wpcf7-submit{
+    padding: 7px;
+}
+
+div.wpcf7-mail-sent-ok{
+    color: #398f14;
+    border: none;
+}
