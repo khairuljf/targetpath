@@ -56,7 +56,7 @@ function client_logo($atts) {
                     ), $atts));
 
     $q = new WP_Query(
-            array('posts_per_page' => $count, 'post_type' => 'our_clients', 'orderby' => 'menu_order', 'order' => 'ASC')
+            array('posts_per_page' => -1, 'post_type' => 'our_clients', 'orderby' => 'menu_order', 'order' => 'ASC')
     );
     
     
@@ -105,105 +105,7 @@ function client_logo($atts) {
 
 add_shortcode('our-client', 'client_logo');
 
-function services($atts) {
-    extract(shortcode_atts(array(
-        'count' => '',
-                    ), $atts));
 
-    $q = new WP_Query(
-            array('posts_per_page' => $count, 'post_type' => 'service', 'orderby' => 'menu_order', 'order' => 'ASC')
-    );
-    ?>
-
-
-
-    <?php
-    $list = '<div class="container"> <div class="row">';
-    $i = 0;
-    while ($q->have_posts()) : $q->the_post();
-        $idd = get_the_ID();
-        $custom_field = get_post_meta($idd, 'custom_field', true);
-        $post_content = get_the_content();
-        $prefix = 'clean_';
-        $icon = get_post_meta(get_the_ID(), $prefix . 'service-icon', true);
-        ?>
-
-        <?php
-        if ($i % 2 == 0) {
-            $list .='
-
-            <div class="col-sm-6">
-                <div class="white-space space-small"></div>
-                <h4 class="animation fadeInLeft"><span> '.get_the_title().'</span></h4>
-                <div class="animation fadeInLeft">
-                    <img alt="" width="73" height="73" src="'.$icon.'" class="img-responsive thumbnail alignleft" />
-                    <div class="animation fadeInLeft">
-                       <p> '.get_the_content().'</p>
-                    </div>
-                </div>
-
-
-                <div class="white-space space-small"></div>
-            </div>
-            <div class="col-sm-6">
-                <div class="white-space space-small"></div>            
-                <img src="'.get_the_post_thumbnail_url().'" class="img-responsive animation fadeInRight animation-active" alt="Process Step1">
-
-                <div class="white-space space-small"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <hr class="hr-fancy text-center" />
-                </div>
-            </div>';
-        }
-        else {
-           
-            $list .= ' <div class="col-sm-6">
-                <div class="white-space space-small"></div>
-
-               
-                 <img src="'.get_the_post_thumbnail_url().'" class="img-responsive animation fadeInLeft " alt="Process Step1">
-
-                <div class="white-space space-small"></div>
-            </div>
-
-            <div class="col-sm-6">
-                <div class="white-space space-small"></div>
-                <h4 class="animation fadeInRight"><span><?php the_title(); ?></span></h4>
-                <div class="animation fadeInRight">
-                    <img alt="" width="73" height="73" src="'. $icon .'" class="img-responsive thumbnail alignleft" />
-                    <div class="animation fadeInRight">
-                       <p> '.get_the_content().'</p>
-                    </div>
-                </div>
-
-
-                <div class="white-space space-small"></div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <hr class="hr-fancy text-center" />
-                </div>
-            </div>';
-
-            
-
-
-
-     
-        }
-
-        $i++;
-      
-    endwhile;
-    $list .= '</div></div>';
-    wp_reset_query();
-    return $list;
-}
-
-add_shortcode('service', 'services');
 
 function recent_comment($atts) {
     extract(shortcode_atts(array(
@@ -384,16 +286,12 @@ function service_list($atts) {
              with an emphasis on new business development and operational infrastructure needed to
              support new revenue. Our systematic approach to growing your business
              and expanding your markets includes a wide range of services and disciplines, including:',
-        
-        'title'=>'hello',
         'image'=>get_template_directory_uri(). '/img/services/TargetPath_Infographic.jpg',
                     ), $atts));
 
     $q = new WP_Query(
             array('posts_per_page' => $count, 'post_type' => 'service', 'orderby' => 'menu_order', 'order' => 'ASC')
     );
-
-
 
     $list = '<div class="container">
         <div class="white-space space-small"></div> <div class="row">
@@ -404,29 +302,133 @@ function service_list($atts) {
              </p>
         
 ';
-
-
-
+    $serviceid=0;
     while ($q->have_posts()) : $q->the_post();
         $idd = get_the_ID();
         $custom_field = get_post_meta($idd, 'custom_field', true);
         $post_content = get_the_content();
 
-
-        $list .= '<p><a href="services.html#strategy"><strong>' . get_the_title() . '</strong></a></p>';
-
+        $list .= '<p><a href="#'.$serviceid.'"><strong>' . get_the_title() . '</strong></a></p>';
+        
+        $serviceid++;
 
     endwhile;
 
 
-    $list .= '</div></div></div><div class="col-md-8 col-md-offset-2">
-        <hr class="hr-fancy text-center">
-        </div>';
+    $list .= '</div></div></div>';
     wp_reset_query();
     return $list;
 }
 
 add_shortcode('service-list', 'service_list');
+
+function services($atts) {
+    extract(shortcode_atts(array(
+        'count' => '',
+                    ), $atts));
+
+    $q = new WP_Query(
+            array('posts_per_page' => $count, 'post_type' => 'service', 'orderby' => 'menu_order', 'order' => 'ASC')
+    );
+
+    $list = '<div class="container"> ';
+    $i = 0;
+    $serviceid=0;
+    while ($q->have_posts()) : $q->the_post();
+        $idd = get_the_ID();
+        $custom_field = get_post_meta($idd, 'custom_field', true);
+        $post_content = get_the_content();
+        $prefix = 'clean_';
+        $icon = get_post_meta(get_the_ID(), $prefix . 'service-icon', true);
+        ?>
+
+        <?php
+        if ($i % 2 == 0) {
+            $list .='
+                <a name="'.$serviceid.'"></a>
+                    <section id="collect"></section>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <hr class="hr-fancy text-center" />
+                        </div>
+                    </div>
+    <div class="row">
+            <div class="col-sm-6">
+                <div class="white-space space-small"></div>
+                <h4 class="animation fadeInLeft"><span> '.get_the_title().'</span></h4>
+                <div class="animation fadeInLeft">
+                    <img alt="" width="73" height="73" src="'.$icon.'" class="img-responsive thumbnail alignleft" />
+                    <div class="animation fadeInLeft">
+                       <p> '.get_the_content().'</p>
+                    </div>
+                </div>
+
+
+                <div class="white-space space-small"></div>
+            </div>
+            <div class="col-sm-6">
+                <div class="white-space space-small"></div>            
+                <img src="'.get_the_post_thumbnail_url().'" class="img-responsive animation fadeInRight animation-active" alt="Process Step1">
+
+                <div class="white-space space-small"></div>
+            </div>
+    </div>
+            ';
+        }
+        else {
+           
+            $list .= ' 
+                   
+                <a name="'.$serviceid.'"></a>
+                    <section id="#"></section>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <hr class="hr-fancy text-center" />
+                        </div>
+                    </div>
+                    
+            <div class="row">
+                    <div class="col-sm-6">
+                    <div class="white-space space-small"></div>
+
+
+                     <img src="'.get_the_post_thumbnail_url().'" class="img-responsive animation fadeInLeft " alt="Process Step1">
+
+                    <div class="white-space space-small"></div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="white-space space-small"></div>
+                    <h4 class="animation fadeInRight"><span>'.get_the_title().'</span></h4>
+                    <div class="animation fadeInRight">
+                        <img alt="" width="73" height="73" src="'. $icon .'" class="img-responsive thumbnail alignleft" />
+                        <div class="animation fadeInRight">
+                           <p> '.get_the_content().'</p>
+                        </div>
+                    </div>
+
+
+                    <div class="white-space space-small"></div>
+                </div>
+            </div>
+
+            ';
+
+     
+        }
+
+        $i++;
+        $serviceid++;
+      
+    endwhile;
+    $list .= '</div></div><div class="col-md-8 col-md-offset-2">
+                            <hr class="hr-fancy text-center" />
+                        </div>';
+    wp_reset_query();
+    return $list;
+}
+
+add_shortcode('service', 'services');
 
 function team_members($atts) {
     extract(shortcode_atts(array(
@@ -727,6 +729,7 @@ function home_all_service($atts) {
             array('posts_per_page' => 3, 'post_type' => 'service', 'orderby' => 'menu_order', 'order' => 'ASC')
     );
     $list .='<div class="col-md-4"><ul class="list-unstyled iconbox-list">';
+    $serviceid=0;
     while ($q->have_posts()) : $q->the_post();
         $idd = get_the_ID();
         $custom_field = get_post_meta($idd, 'custom_field', true);
@@ -741,12 +744,13 @@ function home_all_service($atts) {
                         <div class="iconbox">
                             <div class="iconbox-wrapper circle iconbox-2x pull-right bg-color-none animation zoomIn"> <img alt="" width="78" height="78" src="'.$service.'" /></div>
                             <div class="iconbox-content animation fadeInLeft">
-                                <h5 class="bold text-right"><strong><a href="'.get_the_permalink().'#strategy">'.get_the_title().'</a></strong></h5>
+                                <h5 class="bold text-right"><strong><a href="'.site_url('services').'#'.$serviceid.'">'.get_the_title().'</a></strong></h5>
                                 <p class="text-right">'.read_mores(25).'</p>
                             </div>
                         </div>
                     </li>
                 ';
+       $serviceid++;
     endwhile;
      $list .='</ul></div>';
      
@@ -761,6 +765,7 @@ function home_all_service($atts) {
     );
     $list .='<ul class="list-unstyled iconbox-list">';
     while ($q->have_posts()) : $q->the_post();
+        
         $idd = get_the_ID();
         $custom_field = get_post_meta($idd, 'custom_field', true);
         $post_content = get_the_content();
@@ -774,12 +779,13 @@ function home_all_service($atts) {
                         <div class="iconbox">
                             <div class="iconbox-wrapper circle iconbox-2x bg-color-none animation zoomIn"> <img alt="" width="78" height="78" src="'.$service.'" /> </div>
                             <div class="iconbox-content animation fadeInRight">
-                                <h5 class="bold"><strong><a href="'.get_the_permalink().'#marketing">'.get_the_title().'</a></strong></h5>
+                                <h5 class="bold"><strong><a href="'.site_url('services').'#'.$serviceid.'">'.get_the_title().'</a></strong></h5>
                                 <p>'.read_mores(25).'</p>
                             </div>
                         </div>
                     </li>
                 ';
+       $serviceid++;
     endwhile;
      $list .='</ul></div>';
      

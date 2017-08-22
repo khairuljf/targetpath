@@ -125,7 +125,7 @@
                                         <div class="navbar-header">
                                             <a class="navbar-toggle" data-toggle="collapse" data-target="#gfx-collapse"></a>
                                             <div class="logo">
-                                                <a href="index.html"><img src="<?php echo get_theme_mod('logo_upload') ?>" alt="Logo" /></a>
+                                                <a href="<?php bloginfo('home') ?>"><img src="<?php echo get_theme_mod('logo_upload') ?>" alt="Logo" /></a>
                                             </div>
                                         </div>
                                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -183,9 +183,14 @@ $subtitle = get_post_meta(get_the_ID(), $prefix . 'subtitle-text', true);
 
                 <!-- Parallax -->
                 <?php
-                if (is_page('contact')) {
+                if (is_page('contact' )) {
                     
-                } else {
+                }
+                elseif (is_404() ) {
+                    
+               
+                }
+                else {
                     ?>
                     <div data-stellar-background-ratio="0.1" class="parallax parallax-background13"  style="background-image:url('<?php header_image() ?>')"   >
                         <div class="bg-overlay bg-color-default"></div>

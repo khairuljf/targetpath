@@ -104,7 +104,8 @@ include 'metabox/functions.php';
 function boostrap_started_script() {
     wp_register_style('ModuleStyleSheets', get_template_directory_uri() . '/StyleSheets/ModuleStyleSheets.css');
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
-    wp_register_style('awesome', 'http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+   // wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
+    wp_register_style('awesome',get_template_directory_uri().  '/css/font-awesome.min.css');
     wp_register_style('avendor-font-styles', get_template_directory_uri() . '/css/avendor-font-styles.css');
     wp_register_style('settings', get_template_directory_uri() . '/css/revolutionslider/settings.css');
     wp_register_style('animate', get_template_directory_uri() . '/css/themecss/animate.css');
