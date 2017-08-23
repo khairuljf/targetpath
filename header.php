@@ -146,17 +146,17 @@
 
 
                                         <div class="collapse navbar-collapse" id="gfx-collapse">
-<?php
-wp_nav_menu(array(
-    'theme_location' => 'header-menu',
-    'menu_class' => 'nav navbar-nav gfx-nav', /* add class in ul */
-    'container' => '', /* when you no need class  id or div before ul  */
-    'container_class' => '', /* add div with class before ul */
-    'container_ud' => '', /* add div with id before ul */
-    'fallback_cb' => 'default_menu', /* when menu not selected it will work from default_menu functon functions.php */
-    'walker' => new WP_Bootstrap_Navwalker(),
-));
-?>
+                                            <?php
+                                            wp_nav_menu(array(
+                                                'theme_location' => 'header-menu',
+                                                'menu_class' => 'nav navbar-nav gfx-nav', /* add class in ul */
+                                                'container' => '', /* when you no need class  id or div before ul  */
+                                                'container_class' => '', /* add div with class before ul */
+                                                'container_ud' => '', /* add div with id before ul */
+                                                'fallback_cb' => 'default_menu', /* when menu not selected it will work from default_menu functon functions.php */
+                                                'walker' => new WP_Bootstrap_Navwalker(),
+                                            ));
+                                            ?>
                                         </div>
                                         <!-- /.navbar-collapse -->
                                     </nav>
